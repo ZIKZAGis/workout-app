@@ -1,0 +1,36 @@
+{
+  "name": "workout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./server.js",
+    "start": "node ./server.js"
+  },
+  "keywords": [
+    "workout",
+    "app"
+  ],
+  "author": "Evgeniy",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "prettier-plugin-sort-imports": "^1.7.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@prisma/client": "^4.13.0",
+    "argon2": "^0.30.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "prisma": "^4.13.0"
+  }
+}
