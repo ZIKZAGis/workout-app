@@ -1,17 +1,27 @@
-import { useAuth } from '../../../hooks/useAuth'
+import { useLocation, useNavigate } from 'react-router-dom'
+// import { useAuth } from '../../../hooks/useAuth'
 import Hamburger from '../hamburger/Hamburger'
 import styles from './Header.module.scss'
-import {FiArrowLeft} from 'react-icons/fi'
+import {FiArrowLeft, FiUser} from 'react-icons/fi'
 
-const Header = ({backLink}) => {
-    const {isAuth} = useAuth()
+// eslint-disable-next-line react/prop-types
+const Header = ({backLink = ''}) => {
+    const {pathname} = useLocation()
+    const navigate = useNavigate()
+
+    // const {isAuth} = useAuth()
 
     return (
         <header className={styles.header}>
-            <button onClick={() => {}}>
-                <FiArrowLeft/>
-            </button>
-            {/* {user profile} */}
+            {pathname !== '/' ? 
+                <button onClick={() => {navigate(backLink)}}>
+                    <FiArrowLeft/>
+                </button>
+                : 
+                <button onClick={() => {navigate('/profile')}}>
+                    <FiUser/>
+                </button>
+            }
             <Hamburger/>
         </header>
     )

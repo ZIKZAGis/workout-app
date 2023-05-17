@@ -1,6 +1,7 @@
 import styles from './Hamburger.module.scss'
+import { Link } from 'react-router-dom'
 import cn from 'clsx'
-import { menu } from './menu.data'
+import {menu} from './menu.data'
 
 // eslint-disable-next-line react/prop-types
 const Menu = ({isShow}) => {
@@ -11,13 +12,13 @@ const Menu = ({isShow}) => {
     return (
         <nav className={cn(styles.menu, {[styles.show]: isShow})}>
             <ul>
-                {menu.map((item, index) => {
+                {menu.map((item, index) => (
                     <li key={`_menu_${index}`}>
-                        {item.title}
+                        <Link to={item.link}>{item.title}</Link>
                     </li>
-                })}
+                ))}
                 <li>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className={styles.logout} onClick={handleLogout}>Logout</button>
                 </li>
             </ul>
         </nav>

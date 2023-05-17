@@ -1,23 +1,18 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Layout from '../../layout/Layout'
+import Button from '../../ui/button/Button'
+import styles from './Home.module.scss'
+import { useAuth } from '../../../hooks/useAuth'
 
 function Home() {
-  const [count, setCount] = useState(0)
-  
+  const navigate = useNavigate()
+  const {isAuth} = useAuth()
   return (
-      <Layout>
-        <h1>Vite + React</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
+      <Layout bgImage='/images/home-bg3.jpg'>
+        <Button clickHandler={() => navigate(isAuth ? '/new-workout' : '/auth')}>
+          {isAuth ? 'New' : 'Sign in'}
+        </Button>
+        <h1 className={styles.heading}>EXERCISES FOR THE SHOULDERS</h1>
       </Layout>
   )
 }

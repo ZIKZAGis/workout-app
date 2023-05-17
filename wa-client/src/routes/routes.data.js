@@ -8,41 +8,41 @@ export const routes = [
     {
         path: '/',
         component: Home,
-        auth: false
+        isAuth: false
     },
     {
         path: '/auth',
         component: Auth,
-        auth: false
+        isAuth: false
     },
     {
         path: '/new-workout',
         component: NewWorkout,
-        auth: true
+        isAuth: true
     },
     {
         path: '/new-exercise',
         component: NewExercise,
-        auth: true
+        isAuth: true
     },
     {
         path: '/profile',
         component: Profile,
-        auth: true
+        isAuth: false
     },
     // {
     //     path: '/workout/:id',
     //     component: SingleWorkout,
-    //     auth: true
+    //     isAuth: true
     // },
     // {
     //     path: '/workouts',
     //     component: ListWorkouts,
-    //     auth: true
+    //     isAuth: true
     // },
     // {
     //     path: '/exercise/:id',
     //     component: SingleExercise,
-    //     auth: true
+    //     isAuth: true
     // }
 ]
