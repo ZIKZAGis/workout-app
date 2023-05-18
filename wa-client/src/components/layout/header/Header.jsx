@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-// import { useAuth } from '../../../hooks/useAuth'
+import { useAuth } from '../../../hooks/useAuth'
 import Hamburger from '../hamburger/Hamburger'
 import styles from './Header.module.scss'
 import {FiArrowLeft, FiUser} from 'react-icons/fi'
@@ -9,7 +9,7 @@ const Header = ({backLink = ''}) => {
     const {pathname} = useLocation()
     const navigate = useNavigate()
 
-    // const {isAuth} = useAuth()
+    const {isAuth} = useAuth()
 
     return (
         <header className={styles.header}>
@@ -18,7 +18,7 @@ const Header = ({backLink = ''}) => {
                     <FiArrowLeft/>
                 </button>
                 : 
-                <button onClick={() => {navigate('/profile')}}>
+                <button onClick={() => {navigate(isAuth ? '/profile' : '/auth')}}>
                     <FiUser/>
                 </button>
             }
