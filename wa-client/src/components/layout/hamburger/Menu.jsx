@@ -1,12 +1,20 @@
 import styles from './Hamburger.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import cn from 'clsx'
 import {menu} from './menu.data'
+import { useAuth } from '../../../hooks/useAuth'
+import Cookies from 'js-cookie'
+import { TOKEN } from '../../../app.constants'
 
 // eslint-disable-next-line react/prop-types
-const Menu = ({isShow}) => {
-    const handleLogout = () => {
-
+const Menu = ({isShow, setIsShow}) => {
+    const {setIsAuth} = useAuth()
+    const navigate = useNavigate()
+    const logoutHandler = () => {
+        Cookies.remove(TOKEN)
+        setIsAuth(false)
+        setIsShow(false)
+        navigate('/auth')
     }
 
     return (
@@ -18,7 +26,7 @@ const Menu = ({isShow}) => {
                     </li>
                 ))}
                 <li>
-                    <button className={styles.logout} onClick={handleLogout}>Logout</button>
+                    <button className={styles.logout} onClick={logoutHandler}>Logout</button>
                 </li>
             </ul>
         </nav>

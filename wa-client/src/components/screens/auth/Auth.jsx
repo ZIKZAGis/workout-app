@@ -1,41 +1,13 @@
-/* eslint-disable react/no-unescaped-entities */
-import { useForm } from "react-hook-form"
 import Layout from "../../layout/Layout"
 import Button from "../../ui/button/Button"
 import Field from "../../ui/field/Field"
 import Loader from "../../ui/loader/Loader"
 import styles from './Auth.module.scss'
-import { useState } from "react"
-import { useMutation } from "@tanstack/react-query"
-import authService from "../../../services/auth.service"
+import { useAuthPage } from "./useAuthPage"
 
 
 const Auth = () => {
-
-    const [type, setType] = useState('login')
-
-    const {
-        register, 
-        handleSubmit, 
-        formState: {errors},
-        reset
-    } = useForm({
-        mode: 'onChange'
-    })
-
-    const {mutate, isLoading} = useMutation(
-        ['auth'],
-        ({email, password}) => authService.main(email, password, type),
-        {
-            onSuccess: data => {
-                alert('success') 
-                reset()}
-            }
-        )
-
-    const onSubmit = (data) => {
-        mutate(data)
-    }
+    const {setType, register, handleSubmit, errors, isLoading, onSubmit} = useAuthPage()
 
     return (
         <>

@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../../hooks/useAuth'
 import Hamburger from '../hamburger/Hamburger'
 import styles from './Header.module.scss'
 import {FiArrowLeft, FiUser} from 'react-icons/fi'
+import { useAuth } from '../../../hooks/useAuth'
 
 // eslint-disable-next-line react/prop-types
 const Header = ({backLink = ''}) => {
@@ -13,16 +13,16 @@ const Header = ({backLink = ''}) => {
 
     return (
         <header className={styles.header}>
-            {pathname !== '/' ? 
-                <button onClick={() => {navigate(backLink)}}>
+            {(pathname !== '/' || !isAuth) ? 
+                <button onClick={() => {navigate(isAuth ? backLink : '/auth')}}>
                     <FiArrowLeft/>
                 </button>
                 : 
-                <button onClick={() => {navigate(isAuth ? '/profile' : '/auth')}}>
+                <button onClick={() => {navigate('/profile')}}>
                     <FiUser/>
                 </button>
             }
-            <Hamburger/>
+            {isAuth && <Hamburger/>}
         </header>
     )
 }

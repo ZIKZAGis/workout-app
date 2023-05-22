@@ -13,7 +13,7 @@ const Hamburger = () => {
                 {isShow ? 
                     <VscClose/> : <CgMenuRight/>}
             </button>
-            <Menu isShow={isShow}/>
+            <Menu isShow={isShow} setIsShow={setIsShow}/>
         </div>
     )
 }
