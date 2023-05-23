@@ -2,7 +2,7 @@ import styles from './Button.module.scss'
 import cn from 'clsx'
 
 // eslint-disable-next-line react/prop-types
-const Button = ({children, clickHandler, size = 'xl'}) => {
+const Button = ({children, clickHandler = null, size = 'xl'}) => {
     return (
         <div className={styles.wrapper}>
             <button 
