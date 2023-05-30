@@ -14,11 +14,11 @@ const Header = ({backLink = '/'}) => {
     return (
         <header className={styles.header}>
             {(pathname !== '/' || !isAuth) ? 
-                <button onClick={() => {navigate(isAuth ? backLink : '/auth')}}>
+                <button aria-label='Go to profile' onClick={() => {navigate(isAuth ? backLink : '/auth')}}>
                     <FiArrowLeft/>
                 </button>
                 : 
-                <button onClick={() => {navigate('/profile')}}>
+                <button aria-label='Go back' onClick={() => {navigate('/profile')}}>
                     <FiUser/>
                 </button>
             }
