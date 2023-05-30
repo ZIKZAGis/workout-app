@@ -6,17 +6,16 @@ import { useExerciseLog } from "./hooks/useExerciseLog"
 import ExerciseError from './ExerciseError'
 import TableHeader from './TableHeader'
 import TableRow from './TableRow'
-import { useCompleteLog } from './hooks/useCompleteLog'
+
 
 const ExerciseLog = () => {
-    const {exerciseLog, isSuccess, isLoading, errorChange, getState, onChangeState, toggleTime} = useExerciseLog()
-    const {completeLog, errorCompleted} = useCompleteLog()
+    const {exerciseLog, isSuccess, isLoading, error, getState, onChangeState, toggleTime} = useExerciseLog()
 
     return (
         <>
             <HeaderExerciseLog isSuccess={isSuccess} exerciseLog={exerciseLog}/>
             <div className="wrapper-inner-page" style={{paddingLeft: 0, paddingRight: 0}}>
-                <ExerciseError errors={[errorChange, errorCompleted]}/>
+                <ExerciseError errors={[error]}/>
                 {isLoading ? (<Loader/>) : (
                     <div className={styles.wrapper}>
                         <TableHeader/>

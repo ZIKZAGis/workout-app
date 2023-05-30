@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useUpdateLogTime } from "./useUpdateLogTime"
 
 
+
 export const useExerciseLog = () => {
     const {id} = useParams()
 
@@ -21,7 +22,8 @@ export const useExerciseLog = () => {
             }
     )
 
-    const {updateTime, errorChange} = useUpdateLogTime()
+    const {updateTime, error} = useUpdateLogTime(times)
+
 
     const onChangeState = (timeId, key, value) => {
         const newTimes = times.map(time => {
@@ -65,7 +67,7 @@ export const useExerciseLog = () => {
         onChangeState,
         getTime,
         toggleTime,
-        errorChange,
+        error,
         getState
     }
 }
